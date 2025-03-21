@@ -1,0 +1,24 @@
+{% extends 'pro.twig' %}
+
+{% block main %}
+<form action="professionnel.php?page=cours&action=create" method="post">
+    <input type="hidden" name="id" value="{{ cours.id }}">
+    
+    <p><input type="text" name="titre" placeholder="Titre" value="{{ cours.titre }}"></p>
+    
+    <p><textarea cols="100" rows="10" name="description" placeholder="Description">{{ cours.description }}</textarea></p>
+        
+    <p>
+        <label>Difficulté :</label>
+        <input type="text" name="difficulte" placeholder="Difficulté" value="{{ cours.difficulte }}">
+    </p>
+    
+    <p>
+        <label>Places restantes :</label>
+        <input type="number" name="places_restantes" placeholder="Places restantes" value="{{ cours.places_restantes }}">
+    </p>
+    
+    <p><input type="submit" value="Créer le cours"></p>
+    <input type="hidden" name="id" readonly value="{{ cours.id }}">
+</form>
+{% endblock %}

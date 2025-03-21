@@ -1,0 +1,24 @@
+{% extends 'base.twig' %}
+
+{% block main %}
+<div class="container my-5">
+    <h1 class="text-center mb-4">Choisissez votre type de connexion</h1>
+
+    <div class="row justify-content-center">
+        <!-- Bouton pour se connecter en tant qu'Admin -->
+        <div class="col-md-4 mb-3">
+            <a href="visiteur.php?page=login" class="btn btn-warning w-100">Se connecter en tant qu'Administrateur</a>
+        </div>
+
+        <!-- Bouton pour se connecter en tant que Professionnel -->
+        <div class="col-md-4 mb-3">
+            <a href="visiteur.php?page=login_pro" class="btn btn-success w-100">Se connecter en tant que Professionnel</a>
+        </div>
+
+        <!-- Bouton pour rester en tant que Visiteur -->
+        <div class="col-md-4 mb-3">
+            <a href="javascript:history.back()" class="btn btn-secondary w-100">Rester en tant que Visiteur</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

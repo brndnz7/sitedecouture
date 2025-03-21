@@ -1,0 +1,96 @@
+{% extends 'base.twig' %}
+
+{% block main %}
+<div class="container py-5">
+    <div class="row align-items-center mb-5">
+        <div class="col-lg-6">
+            <h1 class="mb-4">Contactez Monaco Couture</h1>
+            <p class="lead text-muted">
+                Vous avez une question ou un projet en tête ? Nous sommes là pour vous aider. Contactez-nous via le formulaire ou rendez-nous visite dans notre atelier.
+            </p>
+            <ul class="list-unstyled mt-4">
+                <li><strong>Email :</strong> <a href="mailto:{{ email }}" class="text-decoration-none">{{ email }}</a></li>
+                <li><strong>Téléphone :</strong> {{ phone }}</li>
+                <li><strong>Adresse :</strong> {{ address }}</li>
+                <li><strong>Horaires :</strong> Du lundi au vendredi, 9h - 18h</li>
+            </ul>
+        </div>
+        <div class="col-lg-6">
+            <img src="https://www.fabrikable.fr/wp-content/uploads/2022/06/atelier-couture-modelisme-814x600.jpg" alt="Monaco Couture Contact" class="img-fluid rounded shadow">
+        </div>
+    </div>
+
+    <hr class="my-5">
+
+    <!-- Formulaire de contact -->
+    <div class="row">
+        <div class="col-lg-8 mx-auto mb-5">
+            <h2 class="text-center mb-4">Formulaire de Contact</h2>
+            <form method="post" action="visiteur.php?page=contact_submit">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nom</label>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Votre nom" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Votre email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="subject" class="form-label">Sujet</label>
+                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Sujet de votre message" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea class="form-control" id="message" name="message" rows="5" placeholder="Votre message" required></textarea>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Google Maps Embed -->
+    <div class="row mb-5">
+        <div class="col-lg-8 mx-auto">
+            <h2 class="text-center mb-4">Localisation</h2>
+            <div class="ratio ratio-16x9">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.328921394623!2d7.42072971557955!3d43.7335759791169!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12ce8562d93358fb%3A0xf1b0b1efc58bdf73!2sMonaco!5e0!3m2!1sen!2sfr!4v1692014291968!5m2!1sen!2sfr" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <p class="text-center mt-3 text-muted">Retrouvez-nous à notre atelier au cœur de Monaco.</p>
+        </div>
+    </div>
+
+    <hr class="my-5">
+
+    <!-- Services supplémentaires -->
+    <div class="row text-center mb-5">
+        <div class="col-md-4">
+            <div class="icon-box mb-4">
+                <i class="bi bi-envelope text-primary fs-1"></i>
+            </div>
+            <h4>Email rapide</h4>
+            <p>Envoyez-nous un message et nous vous répondrons dans les 24 heures ouvrables.</p>
+        </div>
+        <div class="col-md-4">
+            <div class="icon-box mb-4">
+                <i class="bi bi-phone text-primary fs-1"></i>
+            </div>
+            <h4>Appel direct</h4>
+            <p>Contactez notre service client au {{ phone }} pour une assistance immédiate.</p>
+        </div>
+        <div class="col-md-4">
+            <div class="icon-box mb-4">
+                <i class="bi bi-geo-alt text-primary fs-1"></i>
+            </div>
+            <h4>Visitez-nous</h4>
+            <p>Retrouvez-nous au {{ address }} pour discuter de votre projet.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'base.twig' %}
+
+
+{% block main %}
+<div class="container py-5">
+    <div class="row align-items-center">
+        <div class="col-lg-6">
+            <h1 class="mb-4">À propos de Monaco Couture</h1>
+            <p class="lead text-muted">
+                Bienvenue chez <strong>Monaco Couture</strong>, votre destination pour des créations uniques et sur-mesure. Situé au cœur de la principauté de Monaco, notre atelier vous offre l'excellence en matière de couture et de design.
+            </p>
+            <p>
+                Notre équipe de couturiers expérimentés s'engage à transformer vos idées en réalité. Que ce soit pour une tenue de soirée, un costume élégant ou une robe de mariée, chaque pièce est conçue avec passion et souci du détail.
+            </p>
+            <a href="visiteur.php?page=contact" class="btn btn-primary mt-3">Nous contacter</a>
+        </div>
+        <div class="col-lg-6">
+            <img src="https://ruedesnuages.fr/wp-content/uploads/2021/05/vue-globale-atelier-Rue-des-nuages.jpg" alt="Atelier Monaco Couture" class="img-fluid rounded shadow">
+        </div>
+    </div>
+
+    <hr class="my-5">
+
+    <div class="row text-center">
+        <div class="col-md-4">
+            <div class="icon-box mb-4">
+                <i class="bi bi-scissors text-primary fs-1"></i>
+            </div>
+            <h4>Artisanat d'excellence</h4>
+            <p>Chaque pièce est réalisée à la main avec des matériaux de qualité supérieure.</p>
+        </div>
+        <div class="col-md-4">
+            <div class="icon-box mb-4">
+                <i class="bi bi-gem text-primary fs-1"></i>
+            </div>
+            <h4>Design sur-mesure</h4>
+            <p>Nous créons des tenues uniques adaptées à votre style et vos besoins.</p>
+        </div>
+        <div class="col-md-4">
+            <div class="icon-box mb-4">
+                <i class="bi bi-person-heart text-primary fs-1"></i>
+            </div>
+            <h4>Satisfaction garantie</h4>
+            <p>Notre priorité est de faire de votre vision une réalité parfaite.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

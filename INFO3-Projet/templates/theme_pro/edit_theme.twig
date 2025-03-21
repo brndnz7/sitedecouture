@@ -1,0 +1,26 @@
+{% extends 'professionnel.php.twig' %}
+
+{% block main %}
+<div class="container my-4">
+    <form action="professionnel.php?page=theme&action=update" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+        <input type="hidden" name="id" value="{{ theme.id }}">
+        <div class="mb-3">
+            <label for="nom" class="form-label">Nom</label>
+            <input type="text" name="nom" id="nom" class="form-control" value="{{ theme.nom }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="description" id="description" class="form-control" rows="3" required>{{ theme.description }}</textarea>
+        </div>
+        <div class="mb-3">
+            <label for="old-image" class="form-label">Image actuelle</label>
+            <input type="text" name="old-image" id="old-image" class="form-control" value="{{ theme.image }}" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="image" class="form-label">Nouvelle image</label>
+            <input type="file" name="image" id="image" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+    </form>
+</div>
+{% endblock %}

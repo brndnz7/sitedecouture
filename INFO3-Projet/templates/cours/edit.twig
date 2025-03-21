@@ -1,0 +1,20 @@
+{% extends 'admin.twig' %}
+
+{% block main %}
+
+<form action="admin.php?page=cours&action=update" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" readonly value="{{ cours.id }}">
+    <p><input type="text" name="titre" placeholder="Titre" value="{{ cours.titre }}"></p>
+    <p><textarea cols="100" rows="5" name="description" placeholder="Description">{{ cours.description }}</textarea></p>
+
+    <p>
+        <label>Prix (€) :</label>
+        <input type="number" step="0.01" name="prix" placeholder="Prix (€)" value="{{ cours.prix }}">
+    </p>
+    <p>
+        <label>Places restantes :</label>
+        <input type="number" name="places_restantes" value="{{ cours.places_restantes }}">
+    </p>
+    <p><input type="submit" value="Mettre à jour"></p>
+</form>
+{% endblock %}

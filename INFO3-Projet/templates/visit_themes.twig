@@ -1,0 +1,264 @@
+{% extends 'base.twig' %}
+
+{% block main %}
+<!-- Section Hero -->
+  <section class="hero-section">
+    <!-- Titre en haut à gauche -->
+    <h1 class="hero-title">Bienvenue sur Monaco Couture</h1>
+    <!-- Barre de recherche en bas à gauche -->
+    <div class="hero-search">
+    <div class="d-flex h-100">
+          <div class="search">
+              <input type="text" class="search-input" placeholder="search..." name="">
+              <a href="#" class="search-icon">
+                <i class="bi bi-search"></i>
+              </a>
+          </div>
+      </div>
+    </div>
+  </section>
+<section class="info-section py-5">
+    <div class="container text-center">
+        <div class="row gx-10">
+            <div class="col-md-4 mb-4">
+                <div class="icon-box">
+                    <img src="https://cdn-icons-png.flaticon.com/512/495/495217.png" alt="Nos Services" class="img-fluid mb-5" style="max-width: 100px;">
+                    <h3>Nos Services</h3>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="icon-box">
+                    <img src="https://cdn-icons-png.flaticon.com/512/649/649399.png" alt="Notre Engagement" class="img-fluid mb-5" style="max-width: 100px;">
+                    <h3>Notre Engagement</h3>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="icon-box">
+                    <img src="https://cdn-icons-png.flaticon.com/512/113/113298.png" alt="Notre Équipe" class="img-fluid mb-5" style="max-width: 100px;">
+                    <h3>Notre Équipe</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section Les Plus Consultés -->
+<section class="popular-articles py-5" style="background-color: #979B8C;">
+    <div class="container text-center">
+        <!-- Titre de la section -->
+        <h2 class="text-center text-white mb-5">Les Plus Consultés</h2>
+
+            <div class="row justify-content-center">
+                {% for theme in liste_themes %}
+                    <div class="col-md-4 mb-5">
+                        <div class="article-card-container">
+                            <div class="article-card text-center">
+                                <div class="article-image-container mx-auto">
+                                    <img src="upload/{{ theme.image }}" alt="{{ theme.nom }}" class="article-image rounded shadow">
+                                </div>
+                                <div class="article-text mt-3">
+                                    <h3 class="article-title text-white">{{ theme.nom }}</h3>
+                                    <p class="article-subtitle text-white">{{ theme.description }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        
+        <!-- Bouton Découvrir Plus -->
+        <div class="text-center mt-4">
+            <a href="visiteur.php?action=catalogue#article" class="btn btn-light px-5 py-2 shadow">Découvrir plus d'articles</a>
+        </div>
+    </div>
+</section>
+
+<!-- Section Clients Satisfaits -->
+<section class="clients-satisfaits py-5">
+    <div class="container">
+        <h2 class="text-center mb-5 fw-bold">Clients Satisfaits</h2>
+        <div class="row">
+            <!-- Premier témoignage -->
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow h-100">
+                    <div class="card-body text-center">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDVG2xvjDF1_crpj4dFVPtcrDY6eX92cY_0g&s" alt="Client 1" class="rounded-circle mb-3 object-fit-cover" style="width: 100px; height: 100px;">
+                        <h5 class="card-title fw-bold">Marie Dupont</h5>
+                        <p class="card-text text-muted">"Un service de qualité ! J'ai adoré l'expérience, tout est fluide et rapide."</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Deuxième témoignage -->
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow h-100">
+                    <div class="card-body text-center">
+                        <img src="https://media.istockphoto.com/id/1171169099/fr/photo/homme-avec-les-bras-crois%C3%A9s-disolement-sur-le-fond-gris.jpg?s=612x612&w=0&k=20&c=csQeB3utGtrGeb3WmdSxRYXaJvUy_xqlhbOIZxclcGA=" alt="Client 2" class="rounded-circle mb-3 object-fit-cover" style="width: 100px; height: 100px;">
+                        <h5 class="card-title fw-bold">Jean Martin</h5>
+                        <p class="card-text text-muted">"J'utilise ce service depuis des mois, je ne pourrais pas m'en passer. Bravo à toute l'équipe !"</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Troisième témoignage -->
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow h-100">
+                    <div class="card-body text-center">
+                        <img src="https://media.istockphoto.com/id/1389348844/fr/photo/plan-de-studio-dune-belle-jeune-femme-souriante-debout-sur-un-fond-gris.jpg?s=612x612&w=0&k=20&c=VGipX3a8xrbYuXTNm_61pFuzpGdAO9lwt2xnVUd7Khs=" alt="Client 3" class="rounded-circle mb-3 object-fit-cover" style="width: 100px; height: 100px;">
+                        <h5 class="card-title fw-bold">Sophie Moreau</h5>
+                        <p class="card-text text-muted">"L'interface est simple d'utilisation et le support client est toujours disponible. Merci !"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Nos Cours</h2>
+    <div id="coursCarousel" class="carousel slide" data-bs-ride="carousel">
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+            {% for i in 0..((liste_cours|length - 1) / 4)|round(0, 'floor') %}
+                <button type="button" data-bs-target="#coursCarousel" data-bs-slide-to="{{ i }}" 
+                    class="{{ i == 0 ? 'active' : '' }}" aria-current="{{ i == 0 ? 'true' : 'false' }}" 
+                    aria-label="Slide {{ i + 1 }}"></button>
+            {% endfor %}
+        </div>
+
+        <!-- Carousel Content -->
+        <div class="carousel-inner">
+            {% for cours in liste_cours|batch(4) %}
+                <div class="carousel-item {{ loop.first ? 'active' : '' }}">
+                    <div class="row">
+                        {% for item in cours %}
+                            <div class="col-md-3">
+                                <a href="visiteur.php?action=catalogue#cours" class="text-decoration-none">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ item.titre }}</h5>
+                                            <p class="card-text">{{ item.description | slice(0, 100) ~ '...' }}</p>
+                                            <p class="card-text">{{ item.places_restantes }} places restantes</p>
+                                            <p class="card-text"><strong>{{ item.prix | number_format(2, '.', ',') }} €</strong></p>
+                                            <label class="btn btn-primary">Réserver le cours</label>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#coursCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#coursCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+    <h2 class=" fs-1 fw-bold text-center mt-5"  >Questions fréquentes</h2>
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Accordéon 1 -->
+            <div class="col-md-6 mb-4">
+                <div class="accordion" id="accordionExample1">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne1">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne1" aria-expanded="true" aria-controls="collapseOne1">
+                                Puis-je vendre ou échanger du matériel de couture que je n’utilise plus ?
+                            </button>
+                        </h2>
+                        <div id="collapseOne1" class="accordion-collapse collapse show" aria-labelledby="headingOne1" data-bs-parent="#accordionExample1">
+                            <div class="accordion-body">
+                                Oui, notre plateforme vous permet de publier des annonces pour vendre ou échanger votre matériel de couture inutilisé avec d'autres passionnés.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordéon 2 -->
+            <div class="col-md-6 mb-4">
+                <div class="accordion" id="accordionExample2">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne2">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne2" aria-expanded="true" aria-controls="collapseOne2">
+                               Comment puis-je m'inscrire à un cours de couture proposé par un professionnel ?
+                            </button>
+                        </h2>
+                        <div id="collapseOne2" class="accordion-collapse collapse" aria-labelledby="headingOne2" data-bs-parent="#accordionExample2">
+                            <div class="accordion-body">
+                                Vous pouvez explorer les sessions de cours disponibles dans la section "Cours de couture", consulter les détails, et réserver directement via la plateforme.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordéon 3 -->
+            <div class="col-md-6 mb-4">
+                <div class="accordion" id="accordionExample3">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne3">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne3" aria-expanded="true" aria-controls="collapseOne3">
+                               Les annonces de matériel sont-elles vérifiées avant leur publication ?
+                            </button>
+                        </h2>
+                        <div id="collapseOne3" class="accordion-collapse collapse" aria-labelledby="headingOne3" data-bs-parent="#accordionExample3">
+                            <div class="accordion-body">
+                                Oui, chaque annonce est modérée pour garantir qu'elle respecte nos règles et qu'elle correspond à l'univers de la couture.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Accordéon 4 -->
+            <div class="col-md-6 mb-4">
+                <div class="accordion" id="accordionExample4">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne4">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne4" aria-expanded="true" aria-controls="collapseOne4">
+                                Puis-je proposer des cours de couture en tant que professionnel ?
+                            </button>
+                        </h2>
+                        <div id="collapseOne4" class="accordion-collapse collapse" aria-labelledby="headingOne4" data-bs-parent="#accordionExample4">
+                            <div class="accordion-body">
+                                Absolument ! Les professionnels peuvent créer un compte dédié et publier leurs sessions de cours pour les rendre accessibles à notre communauté.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="container mt-5 rounded-3 p-3" style="background-color: #979B8C;">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="newsletter-section text-center text-white">
+                    <!-- Titre -->
+                    <h2 class="mb-4">Inscrivez-vous à notre Newsletter</h2>
+                    
+                    <!-- Formulaire -->
+                    <form>
+                        <div class="mb-3">
+                            <input type="email" class="form-control rounded-5" placeholder="Entrez votre email" aria-label="Email" required>
+                        </div>
+                        <button class="btn btn-light rounded-5 w-100" type="submit">S'inscrire</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+
+{% endblock %}
+

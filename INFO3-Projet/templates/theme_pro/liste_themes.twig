@@ -1,0 +1,25 @@
+{% extends 'pro.twig' %}
+
+{% block main %}
+<div class="container my-4">
+    <div class="d-flex justify-content-end mb-3">
+        <a href="professionnel.php?page=theme&action=new" class="btn btn-primary">Nouvel article</a>
+    </div>
+    {% for theme in liste_themes %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h3 class="card-title">{{ theme.nom }}</h3>
+            <p class="card-text">{{ theme.description }}</p>
+            <p><strong>Fichier image :</strong> {{ theme.image }}</p>
+            <img src="upload/{{ theme.image }}" alt="image" class="img-fluid mb-3">
+            <div class="d-flex justify-content-between">
+                <a href="professionnel.php?page=theme&action=read&id={{ theme.id }}" class="btn btn-outline-info">Voir le détail</a>
+                <a href="professionnel.php?page=theme&action=edit&id={{ theme.id }}" class="btn btn-outline-secondary">Modifier</a>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <p class="text-center text-muted">Aucun thème présent</p>
+    {% endfor %}
+</div>
+{% endblock %}

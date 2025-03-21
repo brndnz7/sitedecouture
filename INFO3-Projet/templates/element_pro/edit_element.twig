@@ -1,0 +1,14 @@
+{% extends 'pro.twig' %}
+
+{% block main %}
+<form action="professionnel.php?page=element&action=update" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="id" readonly value="{{ element.id }}">
+	<input type="hidden" name="id_article" value="{{ element.id_article }}">
+	<input type="hidden" name="ordre" value="{{ element.ordre }}">
+	<p><input type="text" name="type" readonly value="{{ element.type }}"></p>
+	<textarea cols="100" rows="10" name="contenu">{{ element.contenu }}</textarea>
+	<input type="hidden" name="old-image" value="{{ element.image }}">
+	<p><input type="file" name="image"></p>
+	<p><input type="submit" value="Envoyer"></p>
+</form>
+{% endblock %}

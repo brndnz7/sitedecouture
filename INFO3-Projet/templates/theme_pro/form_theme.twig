@@ -1,0 +1,21 @@
+{% extends 'pro.twig' %}
+
+{% block main %}
+<div class="container my-4">
+    <form action="professionnel.php?page=theme&action=create" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+        <div class="mb-3">
+            <label for="nom" class="form-label">Nom</label>
+            <input type="text" name="nom" id="nom" class="form-control" placeholder="Nom" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="description" id="description" class="form-control" rows="3" placeholder="Description" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="image" class="form-label">Image</label>
+            <input type="file" name="image" id="image" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-success">Envoyer</button>
+    </form>
+</div>
+{% endblock %}

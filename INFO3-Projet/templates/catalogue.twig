@@ -1,0 +1,141 @@
+{% extends 'base.twig' %}
+
+{% block main %}
+<script></script>
+<!-- Section Hero -->
+  <section class="hero-section2">
+    <!-- Titre en haut à gauche -->
+    <h1 class="hero-title">Catalogue</h1>
+  </section>
+<div class="container my-5">
+    <h1 class="text-center mb-4">Catalogue des Articles et Cours</h1>
+
+
+
+ <!-- Liste des Thèmes -->
+<div class="row" id="article">
+    {% if liste_themes is not empty %}
+        {% for theme in liste_themes %}
+            <div class="col-md-3 mb-4">
+                <div class="card-sl">
+                    <!-- Image -->
+                    <div class="card-image">
+                        {% if theme.image %}
+                            <img src="upload/{{ theme.image }}" alt="{{ theme.nom }}" style="width: 320px; height: 320px; object-fit: cover; margin: auto; display: block;">
+                        {% else %}
+                            <div class="d-flex justify-content-center align-items-center" style="height: 150px; width: 150px; background-color: #f8f9fa; margin: auto;">
+                                <span>Aucune image</span>
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Bouton Favori -->
+                    <a class="card-action" href="#"><i class="bi bi-heart"></i></a>
+
+                    <!-- Informations -->
+                    <div class="card-heading">
+                        {{ theme.nom }}
+                    </div>
+
+                    <div class="card-text">
+                        <strong>{{ theme.prix | number_format(2, '.', ',') }} €</strong>
+                    </div>
+
+                    <a href="visiteur.php?action=fiche-theme&id={{ theme.id }}" class="card-button">Voir Détails</a>
+                </div>
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+                
+
+
+    <div class="mb-5" id="cours">
+    <h2 class="mb-5">Recherche de Cours</h2>
+    <form id="search-form" class="row g-3 justify-content-center">
+        <!-- Filtre Niveau -->
+        <div class="col-md-3">
+            <label for="niveau" class="form-label">Niveau</label>
+            <select id="search-niveau" class="form-select">
+                <option value="" selected>Tous les niveaux</option>
+                <option value="Débutant">Débutant</option>
+                <option value="Intermédiaire">Intermédiaire</option>
+                <option value="Avancé">Avancé</option>
+            </select>
+        </div>
+
+        <!-- Filtre Prix Minimum -->
+        <div class="col-md-3">
+            <label for="search-prix-min" class="form-label">Prix Minimum</label>
+            <input type="number" id="search-prix-min" class="form-control" placeholder="Min (€)">
+        </div>
+
+        <!-- Filtre Prix Maximum -->
+        <div class="col-md-3">
+            <label for="search-prix-max" class="form-label">Prix Maximum</label>
+            <input type="number" id="search-prix-max" class="form-control" placeholder="Max (€)">
+        </div>
+
+        <!-- Bouton de recherche -->
+        <div class="col-md-3 d-flex align-items-end">
+            <button type="button" id="search-button" class="btn btn-success w-100">Rechercher</button>
+        </div>
+    </form>
+</div>
+
+<!-- Liste des cours avec bouton réserver -->
+    <div class="row" id="course-list">
+        {% if liste_cours is not empty %}
+            {% for cours in liste_cours %}
+                <div class="col-md-4 mb-4 course-item" data-niveau="{{ cours.difficulte }}" data-prix="{{ cours.prix }}">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ cours.titre }}</h5>
+                            <p class="card-text">{{ cours.description | slice(0, 100) ~ '...' }}</p>
+                            <p class="card-text">{{ cours.places_restantes}} places restantes dans ce cours</p>
+                            <p class="card-text"><strong>{{ cours.prix | number_format(2, '.', ',') }} €</strong></p>
+                            <label for="reservationCheckbox" class="btn btn-primary">Réserver le cours</label>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="text-center">Aucun cours trouvé pour cette recherche.</p>
+        {% endif %}
+    </div>
+
+    <!-- Pop-up -->
+    <input type="checkbox" id="reservationCheckbox" class="d-none">
+    <div id="reservationPopup" class="popup">
+        <div class="popup-content">
+            <h3>Cours réservé avec succès !</h3>
+            <label for="reservationCheckbox" class="btn btn-primary">Retour</label>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("search-button").addEventListener("click", function () {
+        const niveau = document.getElementById("search-niveau").value.toLowerCase();
+        const prixMin = parseFloat(document.getElementById("search-prix-min").value) || 0;
+        const prixMax = parseFloat(document.getElementById("search-prix-max").value) || Infinity;
+
+        const courses = document.querySelectorAll(".course-item");
+
+        courses.forEach(course => {
+            const courseNiveau = course.getAttribute("data-niveau").toLowerCase();
+            const coursePrix = parseFloat(course.getAttribute("data-prix"));
+
+            const matchNiveau = !niveau || courseNiveau.includes(niveau);
+            const matchPrix = coursePrix >= prixMin && coursePrix <= prixMax;
+
+            if (matchNiveau && matchPrix) {
+                course.style.display = "block";
+            } else {
+                course.style.display = "none";
+            }
+        });
+    });
+</script>
+
+{% endblock %}  

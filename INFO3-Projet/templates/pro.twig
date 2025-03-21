@@ -1,0 +1,30 @@
+{% extends 'base.twig' %}
+
+{% block main %}
+<!-- Section principale pour professionnel -->
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card p-5 shadow-lg border-0" style="max-width: 600px; width: 100%; border-radius: 15px;">
+        <div class="text-center mb-4">
+            <h2 class="fw-bold text-primary">Bienvenue, Professionnel</h2>
+            <p class="text-muted">Gérez vos thèmes et accédez à vos cours en toute simplicité.</p>
+        </div>
+        
+        <!-- Boutons d'actions principaux -->
+        <div class="d-grid gap-3 mb-4">
+            <a href="professionnel.php?page=theme" class="btn btn-primary py-3 fw-bold shadow-sm">
+                <i class="bi bi-palette me-2"></i> Gérer les Thèmes
+            </a>
+            <a href="professionnel.php?page=cours" class="btn btn-success py-3 fw-bold shadow-sm">
+                <i class="bi bi-book me-2"></i> Voir les Cours
+            </a>
+        </div>
+        
+        <!-- Déconnexion -->
+        <div class="text-center">
+            <a href="professionnel.php?page=logout" class="btn btn-outline-danger fw-bold px-4">
+                <i class="bi bi-box-arrow-right me-2"></i> Se Déconnecter
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

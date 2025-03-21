@@ -1,0 +1,23 @@
+
+{% extends 'pro.twig' %}
+
+{% block main %}
+<form action="professionnel.php?page=cours&action=update" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id" readonly value="{{ cours.id }}">
+    <p><input type="text" name="titre" placeholder="Titre" value="{{ cours.titre }}"></p>
+    <p><textarea cols="100" rows="5" name="description" placeholder="Description">{{ cours.description }}</textarea></p>
+    <p>
+        <label>Prix :</label>
+        <input type="text" name="prix" placeholder="Prix (€)" value="{{ cours.prix }}">
+    </p>
+    <p>
+        <label>Difficulté :</label>
+        <input type="text" name="difficulte" placeholder="Difficulté" value="{{ cours.difficulte }}">
+    </p>
+    <p>
+        <label>Places restantes :</label>
+        <input type="number" name="places_restantes" placeholder="Places restantes" value="{{ cours.places_restantes }}">
+    </p>
+    <p><input type="submit" value="Mettre à jour"></p>
+</form>
+{% endblock %}

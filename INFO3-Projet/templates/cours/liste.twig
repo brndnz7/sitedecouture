@@ -1,0 +1,43 @@
+{% extends 'admin.twig' %}
+
+{% block main %}
+<div class="block view">
+    <h3>Liste des cours de couture</h3>
+    <a href="admin.php?page=cours&action=new" class="button">Ajouter un nouveau cours</a>
+</div>
+
+<div class="block">
+    {% if liste_cours is not empty %}
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Titre</th>
+                <th>Date</th>
+                <th>Prix (€)</th>
+                <th>Places restantes</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cours in liste_cours %}
+            <tr>
+                <td>{{ cours.id }}</td>
+                <td>{{ cours.titre }}</td>
+                <td>{{ cours.date|date("d/m/Y") }}</td>
+                <td>{{ cours.prix|number_format(2, '.', ',') }}</td>
+                <td>{{ cours.places_restantes }}</td>
+                <td>
+                    <a href="admin.php?page=cours&action=detail&id={{ cours.id }}" class="button small">Détails</a>
+                    <a href="admin.php?page=cours&action=edit&id={{ cours.id }}" class="button small">Modifier</a>
+                    <a href="admin.php?page=cours&action=delete&id={{ cours.id }}" class="button small delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce cours ?')">Supprimer</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>Aucun cours disponible.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'admin.twig' %}
+
+{% block main %}
+<form action="admin.php?page=cours&action=create" method="post">
+    <input type="hidden" name="id" value="{{ cours.id }}">
+    
+    <p><input type="text" name="titre" placeholder="Titre" value="{{ cours.titre }}"></p>
+    
+    <p><textarea cols="100" rows="10" name="description" placeholder="Description">{{ cours.description }}</textarea></p>
+    
+    <p><label>Date du cours :</label> <input type="date" name="date" value="{{ cours.date }}"></p>
+    
+    <p>
+        <label>Heure de début :</label> 
+        <input type="time" name="heure_debut" value="{{ cours.heure_debut }}">
+    </p>
+    
+    <p>
+        <label>Heure de fin :</label> 
+        <input type="time" name="heure_fin" value="{{ cours.heure_fin }}">
+    </p>
+    
+    <p>
+        <label>Prix (€) :</label>
+        <input type="number" step="0.01" name="prix" placeholder="Prix (€)" value="{{ cours.prix }}">
+    </p>
+    
+    <p>
+        <label>Places restantes :</label>
+        <input type="number" name="places_restantes" value="{{ cours.places_restantes }}">
+    </p>
+    
+    <p><input type="submit" value="Envoyer"></p>
+</form>
+{% endblock %}

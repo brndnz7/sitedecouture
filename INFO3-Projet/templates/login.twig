@@ -1,0 +1,22 @@
+{% extends 'base.twig' %}
+
+{% block main %}
+<!-- Section Login -->
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="card p-4 shadow-lg" style="max-width: 400px; width: 100%;">
+        <h2 class="text-center mb-4">Se connecter à l'interface d'administration</h2>
+        
+        <!-- Formulaire de connexion -->
+        <form action="visiteur.php?page=valid_login" method="POST">
+            <div class="mb-3">
+                <label for="login" class="form-label">Mot de passe</label>
+                <input type="password" class="form-control" id="login" name="login" placeholder="Entrez le mot de passe admin" required>
+            </div>
+            
+            <div class="d-grid gap-2">
+                <input type="submit" value="Se connecter" class="btn btn-primary">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

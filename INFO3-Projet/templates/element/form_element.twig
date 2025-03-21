@@ -1,0 +1,33 @@
+{% extends 'admin.twig' %}
+
+{% block main %}
+<div class="block">
+	<h3>Ajouter un élément textuel</h3>
+	<form action="admin.php?page=element&action=create" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="id_article" value="{{ id_article }}">
+		<p>
+			<select name="type">
+				<option value="h1">Titre 1</option>
+				<option value="p">Paragraphe</option>
+			</select>
+		</p>
+		<textarea cols="100" rows="10" name="contenu">Contenu</textarea>
+		<p><input type="submit" value="Envoyer"></p>
+	</form>
+</div>
+
+<div class="block">
+	<h3>Ajouter une image</h3>
+	<form action="admin.php?page=element&action=create" method="post" enctype="multipart/form-data">
+		<input type="hidden" name="id_article" value="{{ id_article }}">
+		<p>
+			<select name="type">
+				<option value="image">Image</option>
+			</select>
+		</p>
+		<p><input type="text" name="contenu" placeholder="Texte alternatif (alt)"></p>
+		<p><input type="file" name="image"></p>
+		<p><input type="submit" value="Envoyer"></p>
+	</form>
+</div>
+{% endblock %}

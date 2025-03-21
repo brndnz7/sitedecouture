@@ -1,0 +1,40 @@
+{% extends 'admin.twig' %}
+
+{% block main %}
+<div class="block view">
+    <h3>{{ cours.titre }}</h3>
+    <h4>Date : {{ cours.date|date("d/m/Y") }}</h4>
+    <h4>Heure : {{ cours.heure_debut }} - {{ cours.heure_fin }}</h4>
+    <h4>Prix : {{ cours.prix|number_format(2, '.', ',') }} €</h4>
+    <h4>Places restantes : {{ cours.places_restantes }}</h4>
+    <p>{{ cours.description }}</p>
+    {% if cours.image %}
+    <img src="upload/{{ cours.image }}" alt="Image du cours">
+    {% endif %}
+</div>
+
+<div class="block control">
+    <a href="admin.php?page=cours&action=new_element&id={{ cours.id }}" class="button">Ajouter un élément</a>
+</div>
+
+<div class="block">
+    {% if liste_elements is not empty %}
+        {% for element in liste_elements %}
+            {% if element.type == "h1" %}
+            <h3>{{ element.contenu }}</h3>
+            {% elseif element.type == "p" %}
+            <p>{{ element.contenu }}</p>
+            {% elseif element.type == "image" %}
+            <img src="upload/{{ element.image }}" alt="{{ element.contenu }}">
+            {% endif %}
+            <p class="control">
+                <a href="admin.php?page=element&action=exchange&id={{ element.id }}" class="button small">Remonter</a>
+                <a href="admin.php?page=element&action=edit&id={{ element.id }}" class="button small">Modifier</a>
+                <a href="admin.php?page=element&action=delete&id={{ element.id }}" class="button small delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet élément ?')">Supprimer</a>
+            </p>
+        {% endfor %}
+    {% else %}
+    <p>Aucun élément présent.</p>
+    {% endif %}
+</div>
+{% endblock %}
